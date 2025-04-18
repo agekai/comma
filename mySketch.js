@@ -21,7 +21,7 @@ function setup() {
 }
 
 function draw() {
-  background(0, 40);
+  background(0);
 
   drawDotArt();
 
