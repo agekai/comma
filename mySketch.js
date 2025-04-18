@@ -35,15 +35,16 @@ function draw() {
 function drawAxesText() {
   let flicker = map(sin(frameCount * 0.05), -1, 1, 80, 200);
   let glowColor = color(0, 255, 255, flicker);
+  let brightColor = color(0, 255, 255);
 
   textSize(14);
   fill(glowColor);
   noStroke();
 
-  let exclusionRadius = 50;
+  let exclusionRadius = 50; // 避免畫到火焰字的區域
 
   for (let i = -width; i < width; i += 20) {
-    if (dist(i, 0, 0, 0) > exclusionRadius - 20 && i !== 0) {
+    if (dist(i, 0, 0, 0) > exclusionRadius-20 && i !== 0) {
       text("線", i, 0);
     }
   }
@@ -54,15 +55,14 @@ function drawAxesText() {
     }
   }
 }
-
 function drawFireText() {
   let flicker = map(sin(frameCount * 0.03), -1, 1, 100, 255);
   fill(255, 100 + random(20), 0, flicker);
   noStroke();
 
   let layers = [
-    { count: 2, y: 45, size: 16 },
-    { count: 3, y: 30, size: 18 },
+		{ count: 2, y: 45, size: 16 },
+		{ count: 3, y: 30, size: 18 },
     { count: 4, y: 15, size: 22 },
     { count: 3, y: 0, size: 24 },
     { count: 2, y: -15, size: 26 },
@@ -72,6 +72,8 @@ function drawFireText() {
   for (let layer of layers) {
     let spacing = 18;
     let offsetX = -(layer.count - 1) * spacing / 2;
+
+    // 增加「風」效果，讓火焰有點飄動感
     let windEffect = sin(frameCount * 0.1 + layer.y * 0.1) * 3;
 
     textSize(layer.size);
