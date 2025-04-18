@@ -103,8 +103,8 @@ function drawDotArt() {
       if (char === "點") {
         if (isDancing) {
           // 閃爍 & 跳舞 & 彩色
-          let flicker = map(sin(frameCount * 0.2 + i + j), -1, 1, 150, 255);
-          fill(color(random(150,255), random(100,255), 0, flicker));
+          let flicker = map(sin(frameCount * 0.2 + i + j), -1, 1, 100, 255);
+          fill(color(255, 255, 0, flicker));
           let bounce = sin(frameCount * 0.3 + i + j) * 1;
           text(char, x, y + bounce);
         } else {
