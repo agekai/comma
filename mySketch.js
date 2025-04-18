@@ -113,9 +113,7 @@ function drawDotArt() {
         }
       } else if (char === "逗") {
         fill(255);
-        let dx = random(-1.5, 1.5);
-        let dy = random(-1.5, 1.5);
-        text(char, x + dx, y + dy);
+        text(char, x, y);
       }
 
       if (char !== "\t") {
